@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Garment - متجر للملابس الداخلية للرجال والنساء</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* التصميم العام */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --light: #e6e6e6;
+            --text: #333;
+            --gold: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* التصميم للرأس */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 12px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-actions i {
+            font-size: 1.2rem;
+            margin-left: 15px;
+            cursor: pointer;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+        
+        .header-actions i:hover {
+            color: var(--accent);
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 30px;
+            padding: 8px 15px;
+            margin-left: 15px;
+        }
+        
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 180px;
+        }
+        
+        /* تصميم الهيرو */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c19d2c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* التصميم للفئات */
+        .categories {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-img {
+            height: 250px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .category-img img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* تصميم المنتجات */
+        .products {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #777;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+        
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--accent);
+        }
+        
+        /* التصميم للفوتر */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .header-actions {
+                margin-top: 10px;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* تصميم خاص بالمنيكان */
+        .mannequin {
+            position: relative;
+            width: 150px;
+            height: 280px;
+            background: #f0f0f0;
+            border-radius: 40% 40% 0 0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .mannequin-head {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+        }
+        
+        .mannequin-body {
+            position: absolute;
+            top: 70px;
+            width: 100px;
+            height: 150px;
+            background: #f0f0f0;
+            border-radius: 20px;
+        }
+        
+        .mannequin-legs {
+            position: absolute;
+            top: 220px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        
+        .mannequin-leg {
+            width: 30px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .mannequin-women {
+            background: #f8e6f0;
+        }
+        
+        .mannequin-women .mannequin-head,
+        .mannequin-women .mannequin-body,
+        .mannequin-women .mannequin-leg {
+            background: #f8e6f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- الرأس -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    توصيل مجاني للطلبات فوق 200 ريال | الدفع عند الاستلام
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-main">
+                <a href="#" class="logo">Alex <span>Garment</span></a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">رجال</a></li>
+                        <li><a href="#">نساء</a></li>
+                        <li><a href="#">المجموعات</a></li>
+                        <li><a href="#">عروض خاصة</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="search-bar">
+                        <input type="text" placeholder="ابحث عن منتج...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="container">
+            <h1>الأناقة تبدأ من الداخل</h1>
+            <p>اكتشف مجموعتنا الفاخرة من الملابس الداخلية للرجال والنساء المصممة لتوفر الراحة والأناقة في كل لحظة</p>
+            <a href="#" class="btn">تصفح المجموعة</a>
+        </div>
+    </section>
+
+    <!-- الفئات -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>فئات المنتجات</h2>
+            </div>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <div class="mannequin">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>ملابس داخلية للرجال</h3>
+                        <a href="#" class="btn">تصفح الآن</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <div class="mannequin mannequin-women">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>ملابس داخلية للنساء</h3>
+                        <a href="#" class="btn">تصفح الآن</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <div class="mannequin">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>ملابس رياضية</h3>
+                        <a href="#" class="btn">تصفح الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>منتجات مميزة</h2>
+            </div>
+            
+            <div class="product-grid">
+                <!-- المنتج 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="mannequin">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                        <span class="product-badge">الأكثر مبيعاً</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">بوكسر رجالي فاخر</h3>
+                        <div class="product-price">
+                            <div class="price">149 ر.س</div>
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتج 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="mannequin mannequin-women">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                        <span class="product-badge">جديد</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">ست سوتيان نسائي مريح</h3>
+                        <div class="product-price">
+                            <div class="price">199 ر.س</div>
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتج 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="mannequin">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                        <span class="product-badge">عرض خاص</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">شورت رياضي رجالي</h3>
+                        <div class="product-price">
+                            <div><span class="old-price">199 ر.س</span> <span class="price">129 ر.س</span></div>
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتج 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="mannequin mannequin-women">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                            <div class="mannequin-legs">
+                                <div class="mannequin-leg"></div>
+                                <div class="mannequin-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">كلسون ناعم للنساء</h3>
+                        <div class="product-price">
+                            <div class="price">179 ر.س</div>
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Alex Garment</h4>
+                    <p>نقدم لكم أفضل تشكيلة من الملابس الداخلية للرجال والنساء بجودة عالية وتصميمات أنيقة تواكب أحدث صيحات الموضة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">المجموعات</a></li>
+                        <li><a href="#">عروض خاصة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>خدمة العملاء</h4>
+                    <ul>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>معلومات التواصل</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone"></i> +966 55 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@alexgarment.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Alex Garment. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تفاعل بسيط للعربة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const title = product.querySelector('.product-title').textContent;
+                
+                // إنشاء عنصر تأكيد
+                const confirmation = document.createElement('div');
+                confirmation.textContent = `تمت إضافة ${title} إلى سلة التسوق`;
+                confirmation.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    background: var(--gold);
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    z-index: 1000;
+                    animation: fadeInOut 3s ease-in-out;
+                `;
+                
+                document.body.appendChild(confirmation);
+                
+                // إزالة العنصر بعد 3 ثواني
+                setTimeout(() => {
+                    confirmation.remove();
+                }, 3000);
+            });
+        });
+        
+        // إضافة أنيميشن للعربة
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(20px); }
+                10% { opacity: 1; transform: translateY(0); }
+                90% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
