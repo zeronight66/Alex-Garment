@@ -14,6 +14,8 @@
             --light: #e6e6e6;
             --text: #333;
             --gold: #d4af37;
+            --dark-red: #8B0000; /* لون Garment الجديد */
+            --whatsapp: #25D366;
         }
         
         * {
@@ -67,7 +69,7 @@
         }
         
         .logo span {
-            color: var(--gold);
+            color: var(--dark-red); /* تغيير لون Garment إلى الأحمر الداكن */
         }
         
         nav ul {
@@ -115,6 +117,7 @@
             border-radius: 30px;
             padding: 8px 15px;
             margin-left: 15px;
+            position: relative;
         }
         
         .search-bar input {
@@ -157,6 +160,7 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            text-align: center;
         }
         
         .btn:hover {
@@ -307,6 +311,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 10px;
         }
         
         .price {
@@ -322,22 +327,42 @@
             margin-right: 5px;
         }
         
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .add-to-cart, .buy-now {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+        
         .add-to-cart {
             background: var(--primary);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .add-to-cart:hover {
             background: var(--accent);
+        }
+        
+        .buy-now {
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+        }
+        
+        .buy-now:hover {
+            background: #128C7E;
         }
         
         /* التصميم للفوتر */
@@ -469,6 +494,10 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
+            
+            .product-actions {
+                flex-direction: column;
+            }
         }
         
         /* تصميم خاص بالمنيكان */
@@ -526,6 +555,288 @@
         .mannequin-women .mannequin-leg {
             background: #f8e6f0;
         }
+
+        /* تصميم سلة التسوق */
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .cart-container.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-left: 15px;
+        }
+        
+        .cart-item-img img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        .cart-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        
+        .checkout-btn:hover {
+            background: #c19d2c;
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: none;
+        }
+        
+        .cart-overlay.active {
+            display: block;
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 15px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* تصميم رسالة البحث */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 300px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 10px;
+            z-index: 100;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .search-results.active {
+            display: block;
+        }
+        
+        .search-result-item {
+            display: flex;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .search-result-img {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        
+        .search-result-img img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .search-result-details {
+            flex: 1;
+        }
+        
+        .search-result-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .search-result-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        /* تصميم واتساب */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 2rem;
+        }
+        
+        /* تصميم رسائل التأكيد */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeInOut 3s ease-in-out;
+            display: none;
+        }
+        
+        .notification.whatsapp {
+            background: var(--whatsapp);
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(20px); }
+        }
     </style>
 </head>
 <body>
@@ -534,7 +845,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-top-content">
-                    توصيل مجاني للطلبات فوق 200 ريال | الدفع عند الاستلام
+                    توصيل مجاني للطلبات فوق 1000 ج.م | الدفع عند الاستلام
                 </div>
             </div>
         </div>
@@ -544,26 +855,58 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="#">الرئيسية</a></li>
-                        <li><a href="#">رجال</a></li>
-                        <li><a href="#">نساء</a></li>
-                        <li><a href="#">المجموعات</a></li>
-                        <li><a href="#">عروض خاصة</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </nav>
                 
                 <div class="header-actions">
                     <i class="fas fa-user"></i>
-                    <i class="fas fa-shopping-cart"></i>
+                    <div class="cart-icon">
+                        <a href="#" id="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
                     <div class="search-bar">
-                        <input type="text" placeholder="ابحث عن منتج...">
+                        <input type="text" id="search-input" placeholder="ابحث عن منتج...">
                         <i class="fas fa-search"></i>
+                        <div class="search-results" id="search-results">
+                            <div class="no-results">لا توجد نتائج</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- سلة التسوق -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-container" id="cart-container">
+        <div class="cart-header">
+            <h3>سلة التسوق</h3>
+            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- سيتم إضافة عناصر السلة هنا ديناميكيًا -->
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>المجموع</span>
+                <span id="cart-total">0 ج.م</span>
+            </div>
+            <a href="#" class="checkout-btn" id="checkout-btn">إتمام الشراء</a>
+        </div>
+    </div>
+
+    <!-- زر واتساب -->
+    <div class="whatsapp-btn" id="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 
     <!-- القسم الرئيسي -->
     <section class="hero">
@@ -645,7 +988,7 @@
             
             <div class="product-grid">
                 <!-- المنتج 1 -->
-                <div class="product-card">
+                <div class="product-card" data-id="1" data-name="بوكسر رجالي فاخر" data-price="149" data-img="mannequin">
                     <div class="product-img">
                         <div class="mannequin">
                             <div class="mannequin-head"></div>
@@ -660,14 +1003,17 @@
                     <div class="product-info">
                         <h3 class="product-title">بوكسر رجالي فاخر</h3>
                         <div class="product-price">
-                            <div class="price">149 ر.س</div>
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="price">149 ج.م</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 2 -->
-                <div class="product-card">
+                <div class="product-card" data-id="2" data-name="ست سوتيان نسائي مريح" data-price="199" data-img="mannequin-women">
                     <div class="product-img">
                         <div class="mannequin mannequin-women">
                             <div class="mannequin-head"></div>
@@ -682,14 +1028,17 @@
                     <div class="product-info">
                         <h3 class="product-title">ست سوتيان نسائي مريح</h3>
                         <div class="product-price">
-                            <div class="price">199 ر.س</div>
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="price">199 ج.م</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 3 -->
-                <div class="product-card">
+                <div class="product-card" data-id="3" data-name="شورت رياضي رجالي" data-price="129" data-img="mannequin">
                     <div class="product-img">
                         <div class="mannequin">
                             <div class="mannequin-head"></div>
@@ -704,14 +1053,17 @@
                     <div class="product-info">
                         <h3 class="product-title">شورت رياضي رجالي</h3>
                         <div class="product-price">
-                            <div><span class="old-price">199 ر.س</span> <span class="price">129 ر.س</span></div>
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                            <div><span class="old-price">199 ج.م</span> <span class="price">129 ج.م</span></div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 4 -->
-                <div class="product-card">
+                <div class="product-card" data-id="4" data-name="كلسون ناعم للنساء" data-price="179" data-img="mannequin-women">
                     <div class="product-img">
                         <div class="mannequin mannequin-women">
                             <div class="mannequin-head"></div>
@@ -725,8 +1077,11 @@
                     <div class="product-info">
                         <h3 class="product-title">كلسون ناعم للنساء</h3>
                         <div class="product-price">
-                            <div class="price">179 ر.س</div>
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
+                            <div class="price">179 ج.م</div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
                         </div>
                     </div>
                 </div>
@@ -750,13 +1105,13 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h4>روابط سريعة</h4>
+                    <h4></h4>
                     <ul>
-                        <li><a href="#">الرئيسية</a></li>
-                        <li><a href="#">من نحن</a></li>
-                        <li><a href="#">المتجر</a></li>
-                        <li><a href="#">المجموعات</a></li>
-                        <li><a href="#">عروض خاصة</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </div>
                 
@@ -774,8 +1129,8 @@
                 <div class="footer-col">
                     <h4>معلومات التواصل</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
-                        <li><i class="fas fa-phone"></i> +966 55 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> +20 100 123 4567</li>
                         <li><i class="fas fa-envelope"></i> info@alexgarment.com</li>
                     </ul>
                 </div>
@@ -787,39 +1142,241 @@
         </div>
     </footer>
 
+    <!-- إشعارات التأكيد -->
+    <div class="notification" id="notification"></div>
+
     <script>
-        // إضافة تفاعل بسيط للعربة
+        // بيانات المنتجات للبحث
+        const products = [
+            { id: 1, name: "بوكسر رجالي فاخر", price: "149 ج.م", img: "mannequin" },
+            { id: 2, name: "ست سوتيان نسائي مريح", price: "199 ج.م", img: "mannequin-women" },
+            { id: 3, name: "شورت رياضي رجالي", price: "129 ج.م", img: "mannequin" },
+            { id: 4, name: "كلسون ناعم للنساء", price: "179 ج.م", img: "mannequin-women" },
+            { id: 5, name: "تي شيرت داخلي رجالي", price: "99 ج.م", img: "mannequin" },
+            { id: 6, name: "ملابس نوم نسائية", price: "219 ج.م", img: "mannequin-women" }
+        ];
+
+        // متغيرات السلة
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartContainer = document.getElementById('cart-container');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartIcon = document.getElementById('cart-icon');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.querySelector('.cart-count');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const notification = document.getElementById('notification');
+
+        // تحديث السلة وعرضها
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-img">
+                        <div class="${item.img}">
+                            <div class="mannequin-head"></div>
+                            <div class="mannequin-body"></div>
+                        </div>
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${item.price} ج.م</div>
+                        <button class="cart-item-remove" data-index="${index}">
+                            <i class="fas fa-trash"></i> إزالة
+                        </button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `${total} ج.م`;
+            cartCount.textContent = cart.length;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        // فتح وإغلاق السلة
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartContainer.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartContainer.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        cartOverlay.addEventListener('click', () => {
+            cartContainer.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // إزالة عنصر من السلة
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.cart-item-remove')) {
+                const index = e.target.closest('.cart-item-remove').dataset.index;
+                const removedItem = cart[index];
+                cart.splice(index, 1);
+                updateCart();
+                
+                showNotification(`تمت إزالة ${removedItem.name} من السلة`);
+            }
+        });
+        
+        // إضافة منتج إلى السلة
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
-                const product = this.closest('.product-card');
-                const title = product.querySelector('.product-title').textContent;
+                const productCard = this.closest('.product-card');
+                const productId = productCard.dataset.id;
+                const productName = productCard.dataset.name;
+                const productPrice = parseInt(productCard.dataset.price);
+                const productImg = productCard.dataset.img;
                 
-                // إنشاء عنصر تأكيد
-                const confirmation = document.createElement('div');
-                confirmation.textContent = `تمت إضافة ${title} إلى سلة التسوق`;
-                confirmation.style.cssText = `
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    background: var(--gold);
-                    color: white;
-                    padding: 15px 25px;
-                    border-radius: 5px;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    z-index: 1000;
-                    animation: fadeInOut 3s ease-in-out;
-                `;
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    img: productImg
+                });
                 
-                document.body.appendChild(confirmation);
-                
-                // إزالة العنصر بعد 3 ثواني
-                setTimeout(() => {
-                    confirmation.remove();
-                }, 3000);
+                updateCart();
+                showNotification(`تمت إضافة ${productName} إلى سلة التسوق`);
             });
         });
         
-        // إضافة أنيميشن للعربة
+        // زر الشراء المباشر عبر واتساب
+        document.querySelectorAll('.buy-now').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productId = productCard.dataset.id;
+                const productName = productCard.dataset.name;
+                const productPrice = parseInt(productCard.dataset.price);
+                const productImg = productCard.dataset.img;
+                
+                // إنشاء رسالة الشراء
+                let message = "مرحبًا، أرغب في شراء المنتج التالي من Alex Garment:\n\n";
+                message += `- ${productName}\n`;
+                message += `- السعر: ${productPrice} ج.م\n\n`;
+                message += "أرجو التواصل معي لإتمام عملية الشراء. شكرًا";
+                
+                // إرسال الرسالة عبر واتساب
+                sendWhatsAppMessage(message);
+                showNotification(`جارٍ فتح واتساب لطلب ${productName}`, "whatsapp");
+            });
+        });
+        
+        // إتمام الشراء عبر واتساب (للسلة)
+        checkoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                showNotification('سلة التسوق فارغة');
+                return;
+            }
+            
+            let message = "مرحبًا، أود شراء المنتجات التالية من Alex Garment:\n\n";
+            cart.forEach((item, index) => {
+                message += `${index+1}. ${item.name} - ${item.price} ج.م\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            message += `\nالمجموع: ${total} ج.م`;
+            message += "\n\nأرجو التواصل معي لإتمام عملية الشراء. شكرًا";
+            
+            // إرسال الرسالة عبر واتساب
+            sendWhatsAppMessage(message);
+            showNotification(`جارٍ فتح واتساب لطلب ${cart.length} منتجات`, "whatsapp");
+        });
+        
+        // زر الواتساب الثابت
+        whatsappBtn.addEventListener('click', () => {
+            const message = "مرحبًا، أرغب في الاستفسار عن منتجات Alex Garment. أرجو التواصل معي. شكرًا";
+            sendWhatsAppMessage(message);
+            showNotification("جارٍ فتح واتساب للاستفسار", "whatsapp");
+        });
+        
+        // وظيفة البحث
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            searchResults.innerHTML = '';
+            
+            if (searchTerm === '') {
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm)
+            );
+            
+            if (filteredProducts.length > 0) {
+                filteredProducts.forEach(product => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                        <div class="search-result-img">
+                            <div class="${product.img}">
+                                <div class="mannequin-head"></div>
+                                <div class="mannequin-body"></div>
+                            </div>
+                        </div>
+                        <div class="search-result-details">
+                            <div class="search-result-title">${product.name}</div>
+                            <div class="search-result-price">${product.price}</div>
+                        </div>
+                    `;
+                    resultItem.addEventListener('click', () => {
+                        searchInput.value = '';
+                        searchResults.classList.remove('active');
+                        // نقوم بتوجيه المستخدم إلى المنتج
+                        const productCard = document.querySelector(`.product-card[data-id="${product.id}"]`);
+                        if (productCard) {
+                            window.scrollTo({
+                                top: productCard.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                            productCard.style.animation = "highlight 1s";
+                            setTimeout(() => {
+                                productCard.style.animation = "";
+                            }, 1000);
+                        }
+                    });
+                    searchResults.appendChild(resultItem);
+                });
+            } else {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'لا توجد نتائج مطابقة';
+                searchResults.appendChild(noResults);
+            }
+            
+            searchResults.classList.add('active');
+        });
+        
+        // إغلاق نتائج البحث عند النقر خارجها
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-bar')) {
+                searchResults.classList.remove('active');
+            }
+        });
+        
+        // تحميل السلة عند بدء الصفحة
+        updateCart();
+        
+        // إضافة أنيميشن للمنتجات
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeInOut {
@@ -828,8 +1385,33 @@
                 90% { opacity: 1; transform: translateY(0); }
                 100% { opacity: 0; transform: translateY(20px); }
             }
+            
+            @keyframes highlight {
+                0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+                50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            }
         `;
         document.head.appendChild(style);
+        
+        // وظيفة عرض الإشعارات
+        function showNotification(message, type = "default") {
+            notification.textContent = message;
+            notification.className = "notification";
+            notification.classList.add(type);
+            notification.style.display = "block";
+            
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 3000);
+        }
+        
+        // وظيفة إرسال رسالة واتساب
+        function sendWhatsAppMessage(message) {
+            const whatsappNumber = "+201234567890"; // استبدل برقم الواتساب الفعلي
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        }
     </script>
 </body>
 </html>
