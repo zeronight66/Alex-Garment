@@ -14,8 +14,9 @@
             --light: #e6e6e6;
             --text: #333;
             --gold: #d4af37;
-            --dark-red: #8B0000; /* لون Garment الجديد */
+            --dark-red: #8B0000;
             --whatsapp: #25D366;
+            --pink: #ffb6c1;
         }
         
         * {
@@ -59,6 +60,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            animation: fadeInDown 0.5s ease;
         }
         
         .logo {
@@ -66,10 +68,11 @@
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            animation: pulse 3s infinite;
         }
         
         .logo span {
-            color: var(--dark-red); /* تغيير لون Garment إلى الأحمر الداكن */
+            color: var(--dark-red);
         }
         
         nav ul {
@@ -86,11 +89,27 @@
             color: var(--text);
             font-weight: 500;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
         }
         
         nav ul li a:hover {
             color: var(--accent);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
         }
         
         .header-actions {
@@ -103,11 +122,12 @@
             margin-left: 15px;
             cursor: pointer;
             color: var(--text);
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
         
         .header-actions i:hover {
             color: var(--accent);
+            transform: scale(1.2);
         }
         
         .search-bar {
@@ -118,6 +138,11 @@
             padding: 8px 15px;
             margin-left: 15px;
             position: relative;
+            transition: all 0.3s;
+        }
+        
+        .search-bar:focus-within {
+            box-shadow: 0 0 0 2px var(--gold);
         }
         
         .search-bar input {
@@ -134,11 +159,13 @@
             padding: 80px 0;
             text-align: center;
             margin-bottom: 50px;
+            animation: fadeIn 1s ease;
         }
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease;
         }
         
         .hero p {
@@ -146,6 +173,7 @@
             max-width: 700px;
             margin: 0 auto 30px;
             opacity: 0.9;
+            animation: fadeInUp 1s ease;
         }
         
         .btn {
@@ -161,12 +189,30 @@
             cursor: pointer;
             font-size: 1rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn:hover {
             background-color: #c19d2c;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+        
+        .btn:hover:after {
+            transform: rotate(30deg) translate(20%, 20%);
         }
         
         /* التصميم للفئات */
@@ -178,6 +224,7 @@
             text-align: center;
             margin-bottom: 40px;
             position: relative;
+            animation: fadeIn 0.8s ease;
         }
         
         .section-title h2 {
@@ -196,6 +243,7 @@
             width: 80px;
             height: 3px;
             background: var(--gold);
+            animation: lineExpand 0.8s ease;
         }
         
         .category-grid {
@@ -209,11 +257,20 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            animation: fadeInUp 0.5s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
+        
+        .category-card:nth-child(1) { animation-delay: 0.1s; }
+        .category-card:nth-child(2) { animation-delay: 0.2s; }
+        .category-card:nth-child(3) { animation-delay: 0.3s; }
         
         .category-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .category-img {
@@ -259,10 +316,20 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s;
+            animation: fadeInUp 0.5s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
         
         .product-card:hover {
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
         }
         
         .product-img {
@@ -296,6 +363,7 @@
             border-radius: 3px;
             font-size: 0.8rem;
             font-weight: 600;
+            animation: pulse 2s infinite;
         }
         
         .product-info {
@@ -343,6 +411,8 @@
             font-weight: 600;
             padding: 10px;
             font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
         }
         
         .add-to-cart {
@@ -353,6 +423,7 @@
         
         .add-to-cart:hover {
             background: var(--accent);
+            transform: translateY(-3px);
         }
         
         .buy-now {
@@ -363,6 +434,23 @@
         
         .buy-now:hover {
             background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .add-to-cart:after, .buy-now:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+        
+        .add-to-cart:hover:after, .buy-now:hover:after {
+            transform: rotate(30deg) translate(20%, 20%);
         }
         
         /* التصميم للفوتر */
@@ -370,6 +458,7 @@
             background: var(--primary);
             color: white;
             padding: 60px 0 20px;
+            animation: fadeIn 1s ease;
         }
         
         .footer-grid {
@@ -378,6 +467,18 @@
             gap: 30px;
             margin-bottom: 40px;
         }
+        
+        .footer-col {
+            animation: fadeInUp 0.5s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .footer-col:nth-child(1) { animation-delay: 0.1s; }
+        .footer-col:nth-child(2) { animation-delay: 0.2s; }
+        .footer-col:nth-child(3) { animation-delay: 0.3s; }
+        .footer-col:nth-child(4) { animation-delay: 0.4s; }
         
         .footer-col h4 {
             font-size: 1.3rem;
@@ -394,6 +495,7 @@
             width: 50px;
             height: 2px;
             background: var(--gold);
+            animation: lineExpand 0.8s ease;
         }
         
         .footer-col ul {
@@ -402,7 +504,17 @@
         
         .footer-col ul li {
             margin-bottom: 10px;
+            animation: fadeInUp 0.5s ease;
+            transform: translateY(10px);
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
+        
+        .footer-col ul li:nth-child(1) { animation-delay: 0.2s; }
+        .footer-col ul li:nth-child(2) { animation-delay: 0.3s; }
+        .footer-col ul li:nth-child(3) { animation-delay: 0.4s; }
+        .footer-col ul li:nth-child(4) { animation-delay: 0.5s; }
+        .footer-col ul li:nth-child(5) { animation-delay: 0.6s; }
         
         .footer-col ul li a {
             color: #ddd;
@@ -412,6 +524,7 @@
         
         .footer-col ul li a:hover {
             color: var(--gold);
+            transform: translateX(5px);
         }
         
         .social-links {
@@ -443,6 +556,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             color: #aaa;
+            animation: fadeIn 0.8s ease;
         }
         
         /* تصميم متجاوب */
@@ -500,62 +614,6 @@
             }
         }
         
-        /* تصميم خاص بالمنيكان */
-        .mannequin {
-            position: relative;
-            width: 150px;
-            height: 280px;
-            background: #f0f0f0;
-            border-radius: 40% 40% 0 0;
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .mannequin-head {
-            width: 60px;
-            height: 60px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            position: absolute;
-            top: 10px;
-        }
-        
-        .mannequin-body {
-            position: absolute;
-            top: 70px;
-            width: 100px;
-            height: 150px;
-            background: #f0f0f0;
-            border-radius: 20px;
-        }
-        
-        .mannequin-legs {
-            position: absolute;
-            top: 220px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-        }
-        
-        .mannequin-leg {
-            width: 30px;
-            height: 60px;
-            background: #f0f0f0;
-            border-radius: 0 0 15px 15px;
-        }
-        
-        .mannequin-women {
-            background: #f8e6f0;
-        }
-        
-        .mannequin-women .mannequin-head,
-        .mannequin-women .mannequin-body,
-        .mannequin-women .mannequin-leg {
-            background: #f8e6f0;
-        }
-
         /* تصميم سلة التسوق */
         .cart-container {
             position: fixed;
@@ -573,6 +631,7 @@
         
         .cart-container.active {
             right: 0;
+            animation: slideInRight 0.3s ease;
         }
         
         .cart-header {
@@ -595,6 +654,12 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #777;
+            transition: all 0.3s;
+        }
+        
+        .close-cart:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
         }
         
         .cart-items {
@@ -605,6 +670,7 @@
             display: flex;
             padding: 15px 0;
             border-bottom: 1px solid #eee;
+            animation: fadeIn 0.3s ease;
         }
         
         .cart-item-img {
@@ -621,6 +687,7 @@
         .cart-item-img img {
             max-width: 90%;
             max-height: 90%;
+            object-fit: contain;
         }
         
         .cart-item-details {
@@ -644,6 +711,11 @@
             cursor: pointer;
             font-size: 1.1rem;
             margin-top: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cart-item-remove:hover {
+            transform: scale(1.1);
         }
         
         .cart-summary {
@@ -651,6 +723,7 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
         }
         
         .cart-total {
@@ -674,10 +747,31 @@
             text-align: center;
             text-decoration: none;
             font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
         .checkout-btn:hover {
             background: #c19d2c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkout-btn:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+        
+        .checkout-btn:hover:after {
+            transform: rotate(30deg) translate(20%, 20%);
         }
         
         .cart-overlay {
@@ -689,6 +783,7 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1999;
             display: none;
+            animation: fadeIn 0.3s ease;
         }
         
         .cart-overlay.active {
@@ -698,6 +793,11 @@
         .cart-icon {
             position: relative;
             margin-left: 15px;
+            transition: all 0.3s;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
         }
         
         .cart-count {
@@ -713,6 +813,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: pulse 2s infinite;
         }
 
         /* تصميم رسالة البحث */
@@ -729,6 +830,7 @@
             display: none;
             max-height: 400px;
             overflow-y: auto;
+            animation: fadeIn 0.3s ease;
         }
         
         .search-results.active {
@@ -740,10 +842,12 @@
             padding: 10px;
             border-bottom: 1px solid #eee;
             cursor: pointer;
+            transition: all 0.3s;
         }
         
         .search-result-item:hover {
             background: #f8f9fa;
+            transform: translateX(-5px);
         }
         
         .search-result-img {
@@ -760,6 +864,7 @@
         .search-result-img img {
             max-width: 90%;
             max-height: 90%;
+            object-fit: contain;
         }
         
         .search-result-details {
@@ -801,6 +906,7 @@
             z-index: 1000;
             cursor: pointer;
             transition: all 0.3s;
+            animation: pulse 2s infinite;
         }
         
         .whatsapp-btn:hover {
@@ -831,11 +937,67 @@
             background: var(--whatsapp);
         }
         
+        /* أنيميشنات */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                right: -400px; 
+                box-shadow: none;
+            }
+            to { 
+                right: 0; 
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+        }
+        
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateY(20px); }
             10% { opacity: 1; transform: translateY(0); }
             90% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(20px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+        
+        @keyframes highlight {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
     </style>
 </head>
@@ -856,7 +1018,7 @@
                 <nav>
                     <ul>
                         <li><a href="#"></a></li>
-                        <li><a href="#"</a></li>
+                        <li><a href="#"></a></li>
                         <li><a href="#"></a></li>
                         <li><a href="#"></a></li>
                         <li><a href="#"></a></li>
@@ -913,7 +1075,7 @@
         <div class="container">
             <h1>الأناقة تبدأ من الداخل</h1>
             <p>اكتشف مجموعتنا الفاخرة من الملابس الداخلية للرجال والنساء المصممة لتوفر الراحة والأناقة في كل لحظة</p>
-            <a href="#" class="btn">تصفح المجموعة</a>
+            <a href="#featured-products" class="btn">تصفح المجموعة</a>
         </div>
     </section>
 
@@ -927,14 +1089,7 @@
             <div class="category-grid">
                 <div class="category-card">
                     <div class="category-img">
-                        <div class="mannequin">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" alt="ملابس داخلية للرجال">
                     </div>
                     <div class="category-content">
                         <h3>ملابس داخلية للرجال</h3>
@@ -944,14 +1099,7 @@
                 
                 <div class="category-card">
                     <div class="category-img">
-                        <div class="mannequin mannequin-women">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" alt="ملابس داخلية للنساء">
                     </div>
                     <div class="category-content">
                         <h3>ملابس داخلية للنساء</h3>
@@ -961,14 +1109,7 @@
                 
                 <div class="category-card">
                     <div class="category-img">
-                        <div class="mannequin">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" alt="ملابس رياضية">
                     </div>
                     <div class="category-content">
                         <h3>ملابس رياضية</h3>
@@ -980,30 +1121,23 @@
     </section>
 
     <!-- المنتجات المميزة -->
-    <section class="products">
+    <section class="products" id="featured-products">
         <div class="container">
             <div class="section-title">
                 <h2>منتجات مميزة</h2>
             </div>
             
             <div class="product-grid">
-                <!-- المنتج 1 -->
-                <div class="product-card" data-id="1" data-name="بوكسر رجالي فاخر" data-price="149" data-img="mannequin">
+                <!-- المنتج 1: طقم حريمي (حمالة عريضة) -->
+                <div class="product-card" data-id="5" data-name="طقم حريمي (حمالة عريضة)" data-price="349" data-img="women-set">
                     <div class="product-img">
-                        <div class="mannequin">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" alt="طقم حريمي (حمالة عريضة)">
                         <span class="product-badge">الأكثر مبيعاً</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">بوكسر رجالي فاخر</h3>
+                        <h3 class="product-title">طقم حريمي (حمالة عريضة)</h3>
                         <div class="product-price">
-                            <div class="price">149 ج.م</div>
+                            <div class="price">349 ج.م</div>
                         </div>
                         <div class="product-actions">
                             <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
@@ -1012,23 +1146,16 @@
                     </div>
                 </div>
                 
-                <!-- المنتج 2 -->
-                <div class="product-card" data-id="2" data-name="ست سوتيان نسائي مريح" data-price="199" data-img="mannequin-women">
+                <!-- المنتج 2: طقم حريمي (حمالة رفيعة) -->
+                <div class="product-card" data-id="6" data-name="طقم حريمي (حمالة رفيعة)" data-price="399" data-img="women-set">
                     <div class="product-img">
-                        <div class="mannequin mannequin-women">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" alt="طقم حريمي (حمالة رفيعة)">
                         <span class="product-badge">جديد</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">ست سوتيان نسائي مريح</h3>
+                        <h3 class="product-title">طقم حريمي (حمالة رفيعة)</h3>
                         <div class="product-price">
-                            <div class="price">199 ج.م</div>
+                            <div class="price">399 ج.م</div>
                         </div>
                         <div class="product-actions">
                             <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
@@ -1037,23 +1164,16 @@
                     </div>
                 </div>
                 
-                <!-- المنتج 3 -->
-                <div class="product-card" data-id="3" data-name="شورت رياضي رجالي" data-price="129" data-img="mannequin">
+                <!-- المنتج 3: حمالة بناتي -->
+                <div class="product-card" data-id="7" data-name="حمالة بناتي" data-price="249" data-img="women-set">
                     <div class="product-img">
-                        <div class="mannequin">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" alt="حمالة بناتي">
                         <span class="product-badge">عرض خاص</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">شورت رياضي رجالي</h3>
+                        <h3 class="product-title">حمالة بناتي</h3>
                         <div class="product-price">
-                            <div><span class="old-price">199 ج.م</span> <span class="price">129 ج.م</span></div>
+                            <div><span class="old-price">299 ج.م</span> <span class="price">249 ج.م</span></div>
                         </div>
                         <div class="product-actions">
                             <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
@@ -1062,17 +1182,10 @@
                     </div>
                 </div>
                 
-                <!-- المنتج 4 -->
-                <div class="product-card" data-id="4" data-name="كلسون ناعم للنساء" data-price="179" data-img="mannequin-women">
+                <!-- المنتج 4: كلسون ناعم للنساء -->
+                <div class="product-card" data-id="4" data-name="كلسون ناعم للنساء" data-price="179" data-img="women-set">
                     <div class="product-img">
-                        <div class="mannequin mannequin-women">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                            <div class="mannequin-legs">
-                                <div class="mannequin-leg"></div>
-                                <div class="mannequin-leg"></div>
-                            </div>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1617692855028-33b0aadbdfde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="كلسون ناعم للنساء">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">كلسون ناعم للنساء</h3>
@@ -1105,13 +1218,13 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h4></h4>
+                    <h4>روابط سريعة</h4>
                     <ul>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
+                        <li><a href="#">الصفحة الرئيسية</a></li>
+                        <li><a href="#featured-products">المنتجات المميزة</a></li>
+                        <li><a href="#">عروض خاصة</a></li>
+                        <li><a href="#">المجموعات الجديدة</a></li>
+                        <li><a href="#">من نحن</a></li>
                     </ul>
                 </div>
                 
@@ -1130,7 +1243,7 @@
                     <h4>معلومات التواصل</h4>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
-                        <li><i class="fas fa-phone"></i> +20 100 123 4567</li>
+                        <li><i class="fas fa-phone"></i> +20 109 906 2835</li>
                         <li><i class="fas fa-envelope"></i> info@alexgarment.com</li>
                     </ul>
                 </div>
@@ -1148,12 +1261,13 @@
     <script>
         // بيانات المنتجات للبحث
         const products = [
+            { id: 5, name: "طقم حريمي (حمالة عريضة)", price: "349 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" },
+            { id: 6, name: "طقم حريمي (حمالة رفيعة)", price: "399 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" },
+            { id: 7, name: "حمالة بناتي", price: "249 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" },
             { id: 1, name: "بوكسر رجالي فاخر", price: "149 ج.م", img: "mannequin" },
             { id: 2, name: "ست سوتيان نسائي مريح", price: "199 ج.م", img: "mannequin-women" },
             { id: 3, name: "شورت رياضي رجالي", price: "129 ج.م", img: "mannequin" },
-            { id: 4, name: "كلسون ناعم للنساء", price: "179 ج.م", img: "mannequin-women" },
-            { id: 5, name: "تي شيرت داخلي رجالي", price: "99 ج.م", img: "mannequin" },
-            { id: 6, name: "ملابس نوم نسائية", price: "219 ج.م", img: "mannequin-women" }
+            { id: 4, name: "كلسون ناعم للنساء", price: "179 ج.م", img: "mannequin-women" }
         ];
 
         // متغيرات السلة
@@ -1183,10 +1297,12 @@
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-img">
-                        <div class="${item.img}">
-                            <div class="mannequin-head"></div>
-                            <div class="mannequin-body"></div>
-                        </div>
+                        ${item.img.startsWith('http') ? 
+                            `<img src="${item.img}" alt="${item.name}">` : 
+                            `<div class="${item.img}">
+                                <div class="mannequin-head"></div>
+                                <div class="mannequin-body"></div>
+                            </div>`}
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
@@ -1254,6 +1370,12 @@
                 
                 updateCart();
                 showNotification(`تمت إضافة ${productName} إلى سلة التسوق`);
+                
+                // اهتزاز زر السلة
+                cartIcon.style.animation = "shake 0.5s";
+                setTimeout(() => {
+                    cartIcon.style.animation = "";
+                }, 500);
             });
         });
         
@@ -1328,10 +1450,12 @@
                     resultItem.className = 'search-result-item';
                     resultItem.innerHTML = `
                         <div class="search-result-img">
-                            <div class="${product.img}">
-                                <div class="mannequin-head"></div>
-                                <div class="mannequin-body"></div>
-                            </div>
+                            ${product.img.startsWith('http') ? 
+                                `<img src="${product.img}" alt="${product.name}">` : 
+                                `<div class="${product.img}">
+                                    <div class="mannequin-head"></div>
+                                    <div class="mannequin-body"></div>
+                                </div>`}
                         </div>
                         <div class="search-result-details">
                             <div class="search-result-title">${product.name}</div>
@@ -1376,23 +1500,25 @@
         // تحميل السلة عند بدء الصفحة
         updateCart();
         
-        // إضافة أنيميشن للمنتجات
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInOut {
-                0% { opacity: 0; transform: translateY(20px); }
-                10% { opacity: 1; transform: translateY(0); }
-                90% { opacity: 1; transform: translateY(0); }
-                100% { opacity: 0; transform: translateY(20px); }
-            }
-            
-            @keyframes highlight {
-                0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-                50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-            }
-        `;
-        document.head.appendChild(style);
+        // إضافة أنيميشن للمنتجات عند التمرير
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = "fadeInUp 0.5s ease forwards";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.category-card, .product-card, .footer-col').forEach(el => {
+            observer.observe(el);
+        });
         
         // وظيفة عرض الإشعارات
         function showNotification(message, type = "default") {
@@ -1408,10 +1534,21 @@
         
         // وظيفة إرسال رسالة واتساب
         function sendWhatsAppMessage(message) {
-            const whatsappNumber = "+201234567890"; // استبدل برقم الواتساب الفعلي
+            const whatsappNumber = "+201099062835"; // الرقم الذي قدمته
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         }
+        
+        // إضافة أنيميشن اهتزاز
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
