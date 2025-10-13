@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Garment - متجر للملابس الداخلية للرجال والنساء</title>
+    <title>Alean - Clothing Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* التصميم العام */
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --light: #e6e6e6;
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #e6b87e;
+            --light: #f8f8f8;
             --text: #333;
             --gold: #d4af37;
             --dark-red: #8B0000;
             --whatsapp: #25D366;
             --pink: #ffb6c1;
+            --white: #ffffff;
+            --gray: #e0e0e0;
+            --jeans-blue: #1560bd;
+            --gray-color: #808080;
+            --turquoise: #40e0d0;
+            --burgundy: #800020;
+            --cumin: #d2691e;
+            --mint: #98ff98;
+            --dark-blue: #00008b;
+            --black: #000000;
+            --dark-gray: #404040;
         }
         
         * {
@@ -27,7 +38,7 @@
         }
         
         body {
-            background-color: #f8f9fa;
+            background-color: var(--white);
             color: var(--text);
             line-height: 1.6;
         }
@@ -41,8 +52,8 @@
         
         /* التصميم للرأس */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -50,9 +61,10 @@
         
         .header-top {
             background-color: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 8px 0;
             font-size: 0.9rem;
+            text-align: center;
         }
         
         .header-main {
@@ -64,15 +76,23 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
-            animation: pulse 3s infinite;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
-            color: var(--dark-red);
+            color: var(--accent);
+        }
+        
+        .logo-icon {
+            margin-left: 10px;
+            font-size: 1.8rem;
+            color: var(--accent);
         }
         
         nav ul {
@@ -81,7 +101,7 @@
         }
         
         nav ul li {
-            margin: 0 12px;
+            margin: 0 15px;
         }
         
         nav ul li a {
@@ -100,12 +120,12 @@
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--accent);
             transition: width 0.3s;
         }
         
         nav ul li a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
         
         nav ul li a:hover:after {
@@ -133,7 +153,7 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: #f1f1f1;
+            background: var(--light);
             border-radius: 30px;
             padding: 8px 15px;
             margin-left: 15px;
@@ -142,7 +162,7 @@
         }
         
         .search-bar:focus-within {
-            box-shadow: 0 0 0 2px var(--gold);
+            box-shadow: 0 0 0 2px var(--accent);
         }
         
         .search-bar input {
@@ -154,18 +174,38 @@
         
         /* تصميم الهيرو */
         .hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
-            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 100px 0;
             text-align: center;
             margin-bottom: 50px;
             animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
             animation: fadeInUp 0.8s ease;
+            letter-spacing: 1px;
         }
         
         .hero p {
@@ -178,8 +218,8 @@
         
         .btn {
             display: inline-block;
-            background-color: var(--gold);
-            color: white;
+            background-color: var(--accent);
+            color: var(--white);
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
@@ -194,7 +234,7 @@
         }
         
         .btn:hover {
-            background-color: #c19d2c;
+            background-color: #d9a566;
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -217,18 +257,18 @@
         
         /* التصميم للفئات */
         .categories {
-            padding: 50px 0;
+            display: none;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             position: relative;
             animation: fadeIn 0.8s ease;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             display: inline-block;
             padding-bottom: 10px;
@@ -242,66 +282,18 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: var(--gold);
+            background: var(--accent);
             animation: lineExpand 0.8s ease;
         }
         
         .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .category-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            animation: fadeInUp 0.5s ease;
-            transform: translateY(20px);
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-        
-        .category-card:nth-child(1) { animation-delay: 0.1s; }
-        .category-card:nth-child(2) { animation-delay: 0.2s; }
-        .category-card:nth-child(3) { animation-delay: 0.3s; }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .category-img {
-            height: 250px;
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .category-img img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-        
-        .category-content {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .category-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            display: none;
         }
         
         /* تصميم المنتجات */
         .products {
-            padding: 50px 0;
-            background-color: #f8f9fa;
+            padding: 80px 0;
+            background-color: var(--white);
         }
         
         .product-grid {
@@ -311,7 +303,7 @@
         }
         
         .product-card {
-            background: white;
+            background: var(--white);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -337,7 +329,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f8f9fa;
+            background-color: var(--light);
             position: relative;
             overflow: hidden;
         }
@@ -357,13 +349,20 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--gold);
-            color: white;
+            color: var(--white);
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 0.8rem;
             font-weight: 600;
             animation: pulse 2s infinite;
+        }
+        
+        .available-badge {
+            background: var(--accent);
+        }
+        
+        .out-of-stock-badge {
+            background: var(--dark-red);
         }
         
         .product-info {
@@ -384,7 +383,7 @@
         
         .price {
             font-weight: 700;
-            color: var(--accent);
+            color: var(--primary);
             font-size: 1.2rem;
         }
         
@@ -417,24 +416,40 @@
         
         .add-to-cart {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             border: none;
         }
         
-        .add-to-cart:hover {
-            background: var(--accent);
+        .add-to-cart:hover:not(:disabled) {
+            background: var(--secondary);
             transform: translateY(-3px);
         }
         
         .buy-now {
-            background: var(--whatsapp);
-            color: white;
+            background: var(--accent);
+            color: var(--white);
             border: none;
         }
         
-        .buy-now:hover {
-            background: #128C7E;
+        .buy-now:hover:not(:disabled) {
+            background: #d9a566;
             transform: translateY(-3px);
+        }
+        
+        .add-to-cart:disabled, .buy-now:disabled {
+            background: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .add-to-cart:disabled:hover, .buy-now:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .add-to-cart:disabled:after, .buy-now:disabled:after {
+            display: none;
         }
         
         .add-to-cart:after, .buy-now:after {
@@ -477,7 +492,7 @@
         
         .size-option, .color-option {
             padding: 5px 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--gray);
             border-radius: 4px;
             font-size: 0.8rem;
             cursor: pointer;
@@ -491,7 +506,7 @@
         
         .size-option:hover, .size-option.selected {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             border-color: var(--primary);
         }
         
@@ -522,7 +537,7 @@
         
         .selected-options span {
             display: inline-block;
-            background: #f0f0f0;
+            background: var(--light);
             padding: 3px 8px;
             border-radius: 4px;
             margin-left: 5px;
@@ -531,7 +546,7 @@
         /* التصميم للفوتر */
         footer {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             padding: 60px 0 20px;
             animation: fadeIn 1s ease;
         }
@@ -569,7 +584,7 @@
             right: 0;
             width: 50px;
             height: 2px;
-            background: var(--gold);
+            background: var(--accent);
             animation: lineExpand 0.8s ease;
         }
         
@@ -598,7 +613,7 @@
         }
         
         .footer-col ul li a:hover {
-            color: var(--gold);
+            color: var(--accent);
             transform: translateX(5px);
         }
         
@@ -616,12 +631,12 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             margin-left: 10px;
-            color: white;
+            color: var(--white);
             transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background: var(--gold);
+            background: var(--accent);
             transform: translateY(-5px);
         }
         
@@ -696,7 +711,7 @@
             right: -400px;
             width: 380px;
             height: 100vh;
-            background: white;
+            background: var(--white);
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             z-index: 2000;
             transition: right 0.3s ease;
@@ -715,7 +730,7 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--gray);
         }
         
         .cart-header h3 {
@@ -744,14 +759,14 @@
         .cart-item {
             display: flex;
             padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--gray);
             animation: fadeIn 0.3s ease;
         }
         
         .cart-item-img {
             width: 80px;
             height: 80px;
-            background: #f8f9fa;
+            background: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -775,7 +790,7 @@
         }
         
         .cart-item-price {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 700;
         }
         
@@ -794,7 +809,7 @@
         }
         
         .cart-summary {
-            background: #f8f9fa;
+            background: var(--light);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -812,8 +827,8 @@
         .checkout-btn {
             display: block;
             width: 100%;
-            background: var(--gold);
-            color: white;
+            background: var(--accent);
+            color: var(--white);
             border: none;
             padding: 12px;
             border-radius: 30px;
@@ -828,7 +843,7 @@
         }
         
         .checkout-btn:hover {
-            background: #c19d2c;
+            background: #d9a566;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -879,8 +894,8 @@
             position: absolute;
             top: -8px;
             right: -8px;
-            background: var(--gold);
-            color: white;
+            background: var(--accent);
+            color: var(--white);
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -897,7 +912,7 @@
             top: 100%;
             right: 0;
             width: 300px;
-            background: white;
+            background: var(--white);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin-top: 10px;
@@ -915,20 +930,20 @@
         .search-result-item {
             display: flex;
             padding: 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--gray);
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .search-result-item:hover {
-            background: #f8f9fa;
+            background: var(--light);
             transform: translateX(-5px);
         }
         
         .search-result-img {
             width: 60px;
             height: 60px;
-            background: #f8f9fa;
+            background: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -953,7 +968,7 @@
         }
         
         .search-result-price {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 700;
             font-size: 0.9rem;
         }
@@ -969,8 +984,8 @@
             position: fixed;
             bottom: 30px;
             left: 30px;
-            background: #25D366;
-            color: white;
+            background: var(--whatsapp);
+            color: var(--white);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -998,8 +1013,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--gold);
-            color: white;
+            background: var(--accent);
+            color: var(--white);
             padding: 15px 25px;
             border-radius: 5px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -1010,6 +1025,10 @@
         
         .notification.whatsapp {
             background: var(--whatsapp);
+        }
+        
+        .notification.error {
+            background: var(--dark-red);
         }
         
         /* أنيميشنات */
@@ -1070,9 +1089,15 @@
         }
         
         @keyframes highlight {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(230, 184, 126, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(230, 184, 126, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(230, 184, 126, 0); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
         }
     </style>
 </head>
@@ -1082,22 +1107,23 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-top-content">
-                    توصيل مجاني للطلبات فوق 1000 ج.م | الدفع عند الاستلام
+                   أهلاً بكم في متجرنا
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="header-main">
-                <a href="#" class="logo">Alex <span>Garment</span></a>
+                <a href="#" class="logo">
+                    <i class="fas fa-star logo-icon"></i>
+                     <span>Alean</span>
+                </a>
                 
                 <nav>
                     <ul>
-                        <li><a href="https://github.com/zeronight66/wrbsite/blob/main/togar.html"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#">عروض</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
                     </ul>
                 </nav>
                 
@@ -1134,7 +1160,7 @@
         <div class="cart-summary">
             <div class="cart-total">
                 <span>المجموع</span>
-                <span id="cart-total">0 ج.م</span>
+                <span id="cart-total">0 ج</span>
             </div>
             <a href="#" class="checkout-btn" id="checkout-btn">إتمام الشراء</a>
         </div>
@@ -1148,71 +1174,77 @@
     <!-- القسم الرئيسي -->
     <section class="hero">
         <div class="container">
-            <h1>الأناقة تبدأ من الداخل</h1>
-            <p>اكتشف مجموعتنا الفاخرة من الملابس الداخلية للرجال والنساء المصممة لتوفر الراحة والأناقة في كل لحظة</p>
-            <a href="#featured-products" class="btn">تصفح المجموعة</a>
-        </div>
-    </section>
-
-    <!-- الفئات -->
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>فئات المنتجات</h2>
-            </div>
-            
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="category-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" alt="ملابس داخلية للنساء">
-                    </div>
-                    <div class="category-content">
-                        <h3>ملابس داخلية للنساء</h3>
-                        <a href="#" class="btn">تصفح الآن</a>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" alt="ملابس داخلية للفتيات">
-                    </div>
-                    <div class="category-content">
-                        <h3>ملابس داخلية للفتيات</h3>
-                        <a href="#" class="btn">تصفح الآن</a>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" alt="ملابس للأطفال">
-                    </div>
-                    <div class="category-content">
-                        <h3>ملابس للأطفال</h3>
-                        <a href="#" class="btn">تصفح الآن</a>
-                    </div>
-                </div>
+            <div class="hero-content">
+                <h1>أسلوب أنيق. جودة استثنائية.</h1>
+                <p>اكتشف مجموعتنا الحصرية من الملابس التي تجمع بين الأناقة والراحة. تصاميم عصرية تلبي جميع أذواقك.</p>
+                <a href="#products" class="btn">تسوق الآن</a>
             </div>
         </div>
     </section>
 
-    <!-- المنتجات المميزة -->
-    <section class="products" id="featured-products">
+    <!-- المنتجات -->
+    <section class="products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>منتجات مميزة</h2>
+                <h2>المنتجات</h2>
             </div>
             
             <div class="product-grid">
-                <!-- المنتج 1: طقم حريمي (حمالة عريضة) -->
-                <div class="product-card" data-id="5" data-name="طقم حريمي (حمالة عريضة)" data-price="349" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true">
+                <!-- طقم أولادي (منتج واحد مع خيارات متعددة) -->
+                <div class="product-card" data-id="20" data-name="طقم أولادي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%AC%D9%86%D8%B2%D8%A7%D8%B1%D9%8A.png?raw=true">
                     <div class="product-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" alt="طقم حريمي (حمالة عريضة)">
-                        <span class="product-badge">الأكثر مبيعاً</span>
+                        <img src="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%AC%D9%86%D8%B2%D8%A7%D8%B1%D9%8A.png?raw=true" alt="طقم أولادي">
+                        <span class="product-badge available-badge">متوفر</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">طقم حريمي (حمالة عريضة)</h3>
+                        <h3 class="product-title">طقم أولادي</h3>
                         <div class="product-price">
-                            <div class="price">349 ج.م</div>
+                            <div class="price" id="price-20">اختر المقاس</div>
+                        </div>
+                        <div class="product-options">
+                            <div class="option-group">
+                                <div class="option-title">المقاسات:</div>
+                                <div class="options">
+                                    <div class="size-option" data-price="105">8</div>
+                                    <div class="size-option" data-price="110">10</div>
+                                    <div class="size-option" data-price="115">12</div>
+                                    <div class="size-option" data-price="125">14</div>
+                                    <div class="size-option" data-price="130">16</div>
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-title">الألوان:</div>
+                                <div class="options">
+                                    <div class="color-option" style="background-color: var(--jeans-blue);" data-color="جنزاري" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%AC%D9%86%D8%B2%D8%A7%D8%B1%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--gray-color);" data-color="رمادي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--turquoise);" data-color="فيروزي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%81%D9%8A%D8%B1%D9%88%D8%B2%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--burgundy);" data-color="نبيتي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%86%D8%A8%D9%8A%D8%AA%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--cumin);" data-color="كموني" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--mint);" data-color="مينت" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selected-options" style="display: none;">
+                            <span id="selected-size-20"></span>
+                            <span id="selected-color-20"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now" disabled>شراء</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- بوكسر رجالي (منتج واحد مع خيارات متعددة) -->
+                <div class="product-card" data-id="30" data-name="بوكسر رجالي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D8%AD%D9%84%D9%8A.png?raw=true">
+                    <div class="product-img">
+                        <img src="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D8%AD%D9%84%D9%8A.png?raw=true" alt="بوكسر رجالي">
+                        <span class="product-badge available-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">بوكسر رجالي</h3>
+                        <div class="product-price">
+                            <div class="price">89 ج</div>
                         </div>
                         <div class="product-options">
                             <div class="option-group">
@@ -1223,394 +1255,161 @@
                                     <div class="size-option">XL</div>
                                     <div class="size-option">2XL</div>
                                     <div class="size-option">3XL</div>
-                                    <div class="size-option">4XL</div>
-                                    <div class="size-option">5XL</div>
                                 </div>
                             </div>
                             <div class="option-group">
                                 <div class="option-title">الألوان:</div>
                                 <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                    <div class="color-option" style="background-color: #FF0000;" data-color="أحمر"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
+                                    <div class="color-option" style="background-color: var(--dark-blue);" data-color="كحلي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D8%AD%D9%84%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--black);" data-color="أسود" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--gray-color);" data-color="رمادي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--mint);" data-color="مينت" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--cumin);" data-color="كموني" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--dark-gray);" data-color="رمادي غامق" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A%20%D8%BA%D8%A7%D9%85%D9%82.png?raw=true"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="selected-options" style="display: none;">
-                            <span id="selected-size-5"></span>
-                            <span id="selected-color-5"></span>
+                            <span id="selected-size-30"></span>
+                            <span id="selected-color-30"></span>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
+                            <button class="add-to-cart" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now" disabled>شراء</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتج الجديد: طقم رجالي -->
+                <div class="product-card" data-id="13" data-name="طقم رجالي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true">
+                    <div class="product-img">
+                        <img src="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true" alt="طقم رجالي">
+                        <span class="product-badge available-badge">جديد</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">طقم رجالي</h3>
+                        <div class="product-price">
+                            <div class="price">193 ج</div>
+                        </div>
+                        <div class="product-options">
+                            <div class="option-group">
+                                <div class="option-title">المقاسات:</div>
+                                <div class="options">
+                                    <div class="size-option">M</div>
+                                    <div class="size-option">L</div>
+                                    <div class="size-option">XL</div>
+                                    <div class="size-option">2XL</div>
+                                    <div class="size-option">3XL</div>
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-title">الألوان:</div>
+                                <div class="options">
+                                    <div class="color-option" style="background-color: var(--black);" data-color="أسود" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--dark-blue);" data-color="كحلي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%83%D8%AD%D9%84%D9%8A.jpg?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--mint);" data-color="مينت" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--cumin);" data-color="كموني" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true"></div>
+                                    <div class="color-option" style="background-color: var(--gray-color);" data-color="رمادي" data-img="https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selected-options" style="display: none;">
+                            <span id="selected-size-13"></span>
+                            <span id="selected-color-13"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now" disabled>شراء</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتج 1: طقم حريمي (حمالة عريضة) -->
+                <div class="product-card" data-id="5" data-name="طقم حريمي (حمالة عريضة)" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true">
+                    <div class="product-img">
+                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" alt="طقم حريمي (حمالة عريضة)">
+                        <span class="product-badge out-of-stock-badge">نفذت الكمية</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">طقم حريمي (حمالة عريضة)</h3>
+                        <div class="product-price">
+                            <div class="price"></div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart out-of-stock-btn" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now out-of-stock-btn" disabled>شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 2: طقم حريمي (حمالة رفيعة) -->
-                <div class="product-card" data-id="6" data-name="طقم حريمي (حمالة رفيعة)" data-price="399" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true">
+                <div class="product-card" data-id="6" data-name="طقم حريمي (حمالة رفيعة)" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true">
                     <div class="product-img">
                         <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" alt="طقم حريمي (حمالة رفيعة)">
-                        <span class="product-badge">جديد</span>
+                        <span class="product-badge out-of-stock-badge">نفذت الكمية</span>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">طقم حريمي (حمالة رفيعة)</h3>
                         <div class="product-price">
-                            <div class="price">399 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                    <div class="size-option">3XL</div>
-                                    <div class="size-option">4XL</div>
-                                    <div class="size-option">5XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                    <div class="color-option" style="background-color: #FF0000;" data-color="أحمر"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-6"></span>
-                            <span id="selected-color-6"></span>
+                            <div class="price"></div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
+                            <button class="add-to-cart out-of-stock-btn" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now out-of-stock-btn" disabled>شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 3: حمالة بناتي -->
-                <div class="product-card" data-id="7" data-name="حمالة بناتي" data-price="249" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true">
+                <div class="product-card" data-id="7" data-name="حمالة بناتي" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true">
                     <div class="product-img">
                         <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" alt="حمالة بناتي">
-                        <span class="product-badge">عرض خاص</span>
+                        <span class="product-badge out-of-stock-badge">نفذت الكمية</span>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">حمالة بناتي</h3>
                         <div class="product-price">
-                            <div><span class="old-price">299 ج.م</span> <span class="price">249 ج.م</span></div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">4</div>
-                                    <div class="size-option">6</div>
-                                    <div class="size-option">8</div>
-                                    <div class="size-option">10</div>
-                                    <div class="size-option">12</div>
-                                    <div class="size-option">14</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                    <div class="color-option" style="background-color: #FFD700;" data-color="ذهبي"></div>
-                                    <div class="color-option" style="background-color: #87CEEB;" data-color="أزرق فاتح"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-7"></span>
-                            <span id="selected-color-7"></span>
+                            <div class="price"></div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
+                            <button class="add-to-cart out-of-stock-btn" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now out-of-stock-btn" disabled>شراء</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- المنتج 4: كلسون ناعم للنساء -->
-                <div class="product-card" data-id="4" data-name="كلسون ناعم للنساء" data-price="179" data-img="https://images.unsplash.com/photo-1617692855028-33b0aadbdfde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1617692855028-33b0aadbdfde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="كلسون ناعم للنساء">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">كلسون ناعم للنساء</h3>
-                        <div class="product-price">
-                            <div class="price">179 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-4"></span>
-                            <span id="selected-color-4"></span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- المنتجات الجديدة -->
-    <section class="products" id="new-products">
-        <div class="container">
-            <div class="section-title">
-                <h2>منتجات جديدة</h2>
-            </div>
-            
-            <div class="product-grid">
                 <!-- المنتج 1: حمالة رفيعة و بانتي -->
-                <div class="product-card" data-id="8" data-name="حمالة رفيعة و بانти" data-price="299" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9%20%D9%88%20%D8%A8%D8%A7%D9%86%D8%AA%D9%8A.jpg?raw=true">
+                <div class="product-card" data-id="8" data-name="حمالة رفيعة و بانتي" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9%20%D9%88%20%D8%A8%D8%A7%D9%86%D8%AA%D9%8A.jpg?raw=true">
                     <div class="product-img">
                         <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9%20%D9%88%20%D8%A8%D8%A7%D9%86%D8%AA%D9%8A.jpg?raw=true" alt="حمالة رفيعة و بانتي">
-                        <span class="product-badge">جديد</span>
+                        <span class="product-badge out-of-stock-badge">نفذت الكمية</span>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">حمالة رفيعة و بانتي</h3>
                         <div class="product-price">
-                            <div class="price">299 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                    <div class="size-option">3XL</div>
-                                    <div class="size-option">4XL</div>
-                                    <div class="size-option">5XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                    <div class="color-option" style="background-color: #FF0000;" data-color="أحمر"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-8"></span>
-                            <span id="selected-color-8"></span>
+                            <div class="price"></div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
+                            <button class="add-to-cart out-of-stock-btn" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now out-of-stock-btn" disabled>شراء</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- المنتج 2: حمالة رفيعة -->
-                <div class="product-card" data-id="9" data-name="حمالة رفيعة" data-price="259" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9.jpg?raw=true">
+                <div class="product-card" data-id="9" data-name="حمالة رفيعة" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9.jpg?raw=true">
                     <div class="product-img">
                         <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9.jpg?raw=true" alt="حمالة رفيعة">
-                        <span class="product-badge">جديد</span>
+                        <span class="product-badge out-of-stock-badge">نفذت الكمية</span>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">حمالة رفيعة</h3>
                         <div class="product-price">
-                            <div class="price">259 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                    <div class="size-option">3XL</div>
-                                    <div class="size-option">4XL</div>
-                                    <div class="size-option">5XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                    <div class="color-option" style="background-color: #FF0000;" data-color="أحمر"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-9"></span>
-                            <span id="selected-color-9"></span>
+                            <div class="price"></div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- المنتج 3: حمالة عريضة وهوت شورت (أطفالي) -->
-                <div class="product-card" data-id="10" data-name="حمالة عريضة وهوت شورت (أطفالي)" data-price="199" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9%20%D9%88%20%D9%87%D9%88%D8%AA%20%D8%B4%D9%88%D8%B1%D8%AA.jpg?raw=true">
-                    <div class="product-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9%20%D9%88%20%D9%88%D8%AA%20%D8%B4%D9%88%D8%B1%D8%AA.jpg?raw=true" alt="حمالة عريضة وهوت شورت (أطفالي)">
-                        <span class="product-badge">عرض خاص</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">حمالة عريضة وهوت شورت (أطفالي)</h3>
-                        <div class="product-price">
-                            <div><span class="old-price">249 ج.م</span> <span class="price">199 ج.م</span></div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">4</div>
-                                    <div class="size-option">6</div>
-                                    <div class="size-option">8</div>
-                                    <div class="size-option">10</div>
-                                    <div class="size-option">12</div>
-                                    <div class="size-option">14</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                    <div class="color-option" style="background-color: #87CEEB;" data-color="أزرق فاتح"></div>
-                                    <div class="color-option" style="background-color: #90EE90;" data-color="أخضر فاتح"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-10"></span>
-                            <span id="selected-color-10"></span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- المنتج 4: حمالة عريضة -->
-                <div class="product-card" data-id="11" data-name="حمالة عريضة" data-price="279" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9.jpg?raw=true">
-                    <div class="product-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9.jpg?raw=true" alt="حمالة عريضة">
-                        <span class="product-badge">جديد</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">حمالة عريضة</h3>
-                        <div class="product-price">
-                            <div class="price">279 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                    <div class="size-option">3XL</div>
-                                    <div class="size-option">4XL</div>
-                                    <div class="size-option">5XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                    <div class="color-option" style="background-color: #FF0000;" data-color="أحمر"></div>
-                                    <div class="color-option" style="background-color: #FFFFFF; border: 1px solid #ddd;" data-color="أبيض"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-11"></span>
-                            <span id="selected-color-11"></span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- المنتج 5: ليجن -->
-                <div class="product-card" data-id="12" data-name="ليجن" data-price="189" data-img="https://github.com/zeronight66/wrbsite/blob/main/%D9%84%D9%8A%D8%AC%D9%86.jpg?raw=true">
-                    <div class="product-img">
-                        <img src="https://github.com/zeronight66/wrbsite/blob/main/%D9%84%D9%8A%D8%AC%D9%86.jpg?raw=true" alt="ليجن">
-                        <span class="product-badge">جديد</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">ليجن</h3>
-                        <div class="product-price">
-                            <div class="price">189 ج.م</div>
-                        </div>
-                        <div class="product-options">
-                            <div class="option-group">
-                                <div class="option-title">المقاسات:</div>
-                                <div class="options">
-                                    <div class="size-option">M</div>
-                                    <div class="size-option">L</div>
-                                    <div class="size-option">XL</div>
-                                    <div class="size-option">2XL</div>
-                                    <div class="size-option">3XL</div>
-                                </div>
-                            </div>
-                            <div class="option-group">
-                                <div class="option-title">الألوان:</div>
-                                <div class="options">
-                                    <div class="color-option" style="background-color: #000000;" data-color="أسود"></div>
-                                    <div class="color-option" style="background-color: #808080;" data-color="رمادي"></div>
-                                    <div class="color-option" style="background-color: #FFC0CB;" data-color="وردي"></div>
-                                    <div class="color-option" style="background-color: #800080;" data-color="بنفسجي"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selected-options" style="display: none;">
-                            <span id="selected-size-12"></span>
-                            <span id="selected-color-12"></span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> إضافة</button>
-                            <button class="buy-now"><i class="fab fa-whatsapp"></i> شراء</button>
+                            <button class="add-to-cart out-of-stock-btn" disabled><i class="fas fa-shopping-cart"></i> إضافة</button>
+                            <button class="buy-now out-of-stock-btn" disabled>شراء</button>
                         </div>
                     </div>
                 </div>
@@ -1623,13 +1422,12 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Alex Garment</h4>
-                    <p>نقدم لكم أفضل تشكيلة من الملابس الداخلية للرجال والنساء بجودة عالية وتصميمات أنيقة تواكب أحدث صيحات الموضة.</p>
+                    <h4>Alean STORE</h4>
+                    <p>متجر Alean يقدم لكم أفضل تشكيلة من الملابس العصرية والأنيقة التي تجمع بين الجودة والراحة. نحرص على تقديم منتجات تلبي جميع الأذواق وتواكب أحدث صيحات الموضة.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/0.0alean?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1EoGprrAA6/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@keogero8?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 
@@ -1637,8 +1435,7 @@
                     <h4>روابط سريعة</h4>
                     <ul>
                         <li><a href="#">الصفحة الرئيسية</a></li>
-                        <li><a href="#featured-products">المنتجات المميزة</a></li>
-                        <li><a href="#new-products">المنتجات الجديدة</a></li>
+                        <li><a href="#products">المنتجات</a></li>
                         <li><a href="#">عروض خاصة</a></li>
                         <li><a href="#">من نحن</a></li>
                     </ul>
@@ -1658,15 +1455,15 @@
                 <div class="footer-col">
                     <h4>معلومات التواصل</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
-                        <li><i class="fas fa-phone"></i> +20 109 906 2835</li>
-                        <li><i class="fas fa-envelope"></i> info@alexgarment.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الإسكندرية، مصر</li>
+                        <li><i class="fas fa-phone"></i> 01063696044</li>
+                        <li><i class="fas fa-envelope"></i> info@aleanstore.com</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                &copy; 2023 Alex Garment. جميع الحقوق محفوظة.
+                &copy; 2023 Alean STORE. جميع الحقوق محفوظة.
             </div>
         </div>
     </footer>
@@ -1677,15 +1474,15 @@
     <script>
         // بيانات المنتجات للبحث
         const products = [
-            { id: 5, name: "طقم حريمي (حمالة عريضة)", price: "349 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" },
-            { id: 6, name: "طقم حريمي (حمالة رفيعة)", price: "399 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" },
-            { id: 7, name: "حمالة بناتي", price: "249 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" },
-            { id: 4, name: "كلسون ناعم للنساء", price: "179 ج.م", img: "https://images.unsplash.com/photo-1617692855028-33b0aadbdfde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
-            { id: 8, name: "حمالة رفيعة و بانتي", price: "299 ج.м", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9%20%D9%88%20%D8%A8%D8%A7%D9%86%D8%AA%D9%8A.jpg?raw=true" },
-            { id: 9, name: "حمالة رفيعة", price: "259 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9.jpg?raw=true" },
-            { id: 10, name: "حمالة عريضة وهوت شورت (أطفالي)", price: "199 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9%20%D9%88%20%D9%87%D9%88%D8%AA%20%D8%B4%D9%88%D8%B1%D8%AA.jpg?raw=true" },
-            { id: 11, name: "حمالة عريضة", price: "279 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B9%D8%B1%D9%8A%D8%B6%D8%A9.jpg?raw=true" },
-            { id: 12, name: "ليجن", price: "189 ج.م", img: "https://github.com/zeronight66/wrbsite/blob/main/%D9%84%D9%8A%D8%AC%D9%86.jpg?raw=true" }
+            { id: 5, name: "طقم حريمي (حمالة عريضة)", price: "", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A.png?raw=true" },
+            { id: 6, name: "طقم حريمي (حمالة رفيعة)", price: "", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%B7%D9%82%D9%85%20%D8%AD%D8%B1%D9%8A%D9%85%D9%8A%20(%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9).png?raw=true" },
+            { id: 7, name: "حمالة بناتي", price: "", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%A8%D9%86%D8%A7%D8%AA%D9%8A.png?raw=true" },
+            { id: 8, name: "حمالة رفيعة و بانتي", price: "", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9%20%D9%88%20%D8%A8%D8%A7%D9%86%D8%AA%D9%8A.jpg?raw=true" },
+            { id: 9, name: "حمالة رفيعة", price: "", img: "https://github.com/zeronight66/wrbsite/blob/main/%D8%AD%D9%85%D8%A7%D9%84%D8%A9%20%D8%B1%D9%81%D9%8A%D8%B9%D8%A9.jpg?raw=true" },
+            { id: 13, name: "طقم رجالي", price: "193 ج", img: "https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true" },
+            // إضافة المنتجات الجديدة
+            { id: 20, name: "طقم أولادي", price: "105 ج", img: "https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%AC%D9%86%D8%B2%D8%A7%D8%B1%D9%8A.png?raw=true" },
+            { id: 30, name: "بوكسر رجالي", price: "89 ج", img: "https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D8%AD%D9%84%D9%8A.png?raw=true" }
         ];
 
         // متغيرات السلة
@@ -1703,6 +1500,35 @@
         const searchResults = document.getElementById('search-results');
         const notification = document.getElementById('notification');
 
+        // تحميل الصور مسبقًا لمنتج طقم رجالي لتسريع ظهورها
+        function preloadImages() {
+            const imageUrls = [
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%83%D8%AD%D9%84%D9%8A.jpg?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%B1%D8%AC%D8%A7%D9%84%D9%8A%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true',
+                // إضافة صور المنتجات الجديدة
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%AC%D9%86%D8%B2%D8%A7%D8%B1%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%81%D9%8A%D8%B1%D9%88%D8%B2%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%86%D8%A8%D9%8A%D8%AA%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%B7%D9%82%D9%85%20%D8%A3%D9%88%D9%84%D8%A7%D8%AF%D9%8A%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D8%AD%D9%84%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%A3%D8%B3%D9%88%D8%AF.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%85%D9%8A%D9%86%D8%AA.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D9%83%D9%85%D9%88%D9%86%D9%8A.png?raw=true',
+                'https://github.com/zeronight66/Alean/blob/main/%D8%A8%D9%88%D9%83%D8%B3%D8%B1%20%D8%B1%D9%85%D8%A7%D8%AF%D9%8A%20%D8%BA%D8%A7%D9%85%D9%82.png?raw=true'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+
         // تحديث السلة وعرضها
         function updateCart() {
             cartItems.innerHTML = '';
@@ -1719,7 +1545,7 @@
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
-                        <div class="cart-item-price">${item.price} ج.م</div>
+                        <div class="cart-item-price">${item.price} ج</div>
                         ${item.size ? `<div class="cart-item-size">المقاس: ${item.size}</div>` : ''}
                         ${item.color ? `<div class="cart-item-color">اللون: ${item.color}</div>` : ''}
                         <button class="cart-item-remove" data-index="${index}">
@@ -1730,7 +1556,7 @@
                 cartItems.appendChild(cartItem);
             });
             
-            cartTotal.textContent = `${total} ج.م`;
+            cartTotal.textContent = `${total} ج`;
             cartCount.textContent = cart.length;
             localStorage.setItem('cart', JSON.stringify(cart));
         }
@@ -1770,11 +1596,32 @@
         // إضافة منتج إلى السلة
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
+                // منع الإضافة إذا كان المنتج نفذ
+                if (this.classList.contains('out-of-stock-btn')) {
+                    showNotification('عذرًا، هذا المنتج غير متوفر حاليًا', 'error');
+                    return;
+                }
+                
                 const productCard = this.closest('.product-card');
                 const productId = productCard.dataset.id;
                 const productName = productCard.dataset.name;
-                const productPrice = parseInt(productCard.dataset.price);
                 const productImg = productCard.dataset.img;
+                
+                // الحصول على السعر
+                let productPrice = 0;
+                if (productId === '13') {
+                    productPrice = 193;
+                } else if (productId === '30') {
+                    productPrice = 89;
+                } else if (productId === '20') {
+                    const selectedSize = productCard.querySelector('.size-option.selected');
+                    if (selectedSize) {
+                        productPrice = parseInt(selectedSize.dataset.price);
+                    } else {
+                        showNotification('يرجى اختيار المقاس أولاً', 'error');
+                        return;
+                    }
+                }
                 
                 // الحصول على المقاس واللون المختارين
                 const selectedSize = productCard.querySelector('.size-option.selected');
@@ -1782,6 +1629,7 @@
                 
                 let size = '';
                 let color = '';
+                let finalImg = productImg;
                 
                 if (selectedSize) {
                     size = selectedSize.textContent;
@@ -1789,6 +1637,10 @@
                 
                 if (selectedColor) {
                     color = selectedColor.dataset.color;
+                    // إذا كان هناك صورة محددة للون، استخدمها
+                    if (selectedColor.dataset.img) {
+                        finalImg = selectedColor.dataset.img;
+                    }
                 }
                 
                 // إضافة المنتج إلى السلة مع خياراته
@@ -1796,7 +1648,7 @@
                     id: productId,
                     name: productName,
                     price: productPrice,
-                    img: productImg,
+                    img: finalImg,
                     size: size,
                     color: color
                 });
@@ -1815,11 +1667,32 @@
         // زر الشراء المباشر عبر واتساب
         document.querySelectorAll('.buy-now').forEach(button => {
             button.addEventListener('click', function() {
+                // منع الشراء إذا كان المنتج نفذ
+                if (this.classList.contains('out-of-stock-btn')) {
+                    showNotification('عذرًا، هذا المنتج غير متوفر حاليًا', 'error');
+                    return;
+                }
+                
                 const productCard = this.closest('.product-card');
                 const productId = productCard.dataset.id;
                 const productName = productCard.dataset.name;
-                const productPrice = parseInt(productCard.dataset.price);
                 const productImg = productCard.dataset.img;
+                
+                // الحصول على السعر
+                let productPrice = 0;
+                if (productId === '13') {
+                    productPrice = 193;
+                } else if (productId === '30') {
+                    productPrice = 89;
+                } else if (productId === '20') {
+                    const selectedSize = productCard.querySelector('.size-option.selected');
+                    if (selectedSize) {
+                        productPrice = parseInt(selectedSize.dataset.price);
+                    } else {
+                        showNotification('يرجى اختيار المقاس أولاً', 'error');
+                        return;
+                    }
+                }
                 
                 // الحصول على المقاس واللون المختارين
                 const selectedSize = productCard.querySelector('.size-option.selected');
@@ -1837,9 +1710,9 @@
                 }
                 
                 // إنشاء رسالة الشراء
-                let message = "مرحبًا، أرغب في شراء المنتج التالي من Alex Garment:\n\n";
+                let message = "مرحبًا، أرغب في شراء المنتج التالي من Alean STORE:\n\n";
                 message += `- ${productName}\n`;
-                message += `- السعر: ${productPrice} ج.م\n`;
+                message += `- السعر: ${productPrice} ج\n`;
                 
                 if (size) {
                     message += `- المقاس: ${size}\n`;
@@ -1866,9 +1739,9 @@
                 return;
             }
             
-            let message = "مرحبًا، أود شراء المنتجات التالية من Alex Garment:\n\n";
+            let message = "مرحبًا، أود شراء المنتجات التالية من Alean STORE:\n\n";
             cart.forEach((item, index) => {
-                message += `${index+1}. ${item.name} - ${item.price} ج.م\n`;
+                message += `${index+1}. ${item.name} - ${item.price} ج\n`;
                 
                 if (item.size) {
                     message += `   المقاس: ${item.size}\n`;
@@ -1882,7 +1755,7 @@
             });
             
             const total = cart.reduce((sum, item) => sum + item.price, 0);
-            message += `المجموع: ${total} ج.م`;
+            message += `المجموع: ${total} ج`;
             message += "\n\nأرجو التواصل معي لإتمام عملية الشراء. شكرًا";
             
             // إرسال الرسالة عبر واتساب
@@ -1892,7 +1765,7 @@
         
         // زر الواتساب الثابت
         whatsappBtn.addEventListener('click', () => {
-            const message = "مرحبًا، أرغب في الاستفسار عن منتجات Alex Garment. أرجو التواصل معي. شكرًا";
+            const message = "مرحبًا، أرغب في الاستفسار عن منتجات Alean STORE. أرجو التواصل معي. شكرًا";
             sendWhatsAppMessage(message);
             showNotification("جارٍ فتح واتساب للاستفسار", "whatsapp");
         });
@@ -1986,7 +1859,9 @@
         function showNotification(message, type = "default") {
             notification.textContent = message;
             notification.className = "notification";
-            notification.classList.add(type);
+            if (type !== "default") {
+                notification.classList.add(type);
+            }
             notification.style.display = "block";
             
             setTimeout(() => {
@@ -1996,12 +1871,12 @@
         
         // وظيفة إرسال رسالة واتساب
         function sendWhatsAppMessage(message) {
-            const whatsappNumber = "+201099062835"; // الرقم الذي قدمته
+            const whatsappNumber = "01063696044"; // الرقم الجديد
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         }
         
-        // اختيار المقاسات والألوان
+        // اختيار المقاسات والألوان مع تغيير صورة المنتج وتفعيل الأزرار
         document.querySelectorAll('.size-option, .color-option').forEach(option => {
             option.addEventListener('click', function() {
                 // إزالة التحديد من جميع الخيارات في نفس المجموعة
@@ -2010,6 +1885,28 @@
                 
                 // تحديد الخيار الحالي
                 this.classList.add('selected');
+                
+                // إذا كان الخيار المختار هو لون، قم بتغيير صورة المنتج
+                if (this.classList.contains('color-option')) {
+                    const productCard = this.closest('.product-card');
+                    const productImg = productCard.querySelector('.product-img img');
+                    const newImg = this.dataset.img;
+                    
+                    if (newImg) {
+                        productImg.src = newImg;
+                        productCard.dataset.img = newImg; // تحديث الصورة الافتراضية للمنتج
+                    }
+                }
+                
+                // إذا كان الخيار المختار هو مقاس لمنتج "طقم أولادي"، قم بتحديث السعر
+                if (this.classList.contains('size-option') && this.dataset.price) {
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.dataset.id;
+                    if (productId === '20') {
+                        const priceElement = productCard.querySelector('.price');
+                        priceElement.textContent = `${this.dataset.price} ج`;
+                    }
+                }
                 
                 // عرض الخيارات المحددة
                 const productCard = this.closest('.product-card');
@@ -2033,25 +1930,32 @@
                         colorSpan.textContent = `اللون: ${selectedColor.dataset.color}`;
                     }
                 }
+                
+                // تفعيل الأزرار إذا تم اختيار مقاس ولون
+                const addToCartBtn = productCard.querySelector('.add-to-cart');
+                const buyNowBtn = productCard.querySelector('.buy-now');
+                const selectedSize = productCard.querySelector('.size-option.selected');
+                const selectedColor = productCard.querySelector('.color-option.selected');
+                
+                if (selectedSize && selectedColor) {
+                    addToCartBtn.disabled = false;
+                    buyNowBtn.disabled = false;
+                } else {
+                    addToCartBtn.disabled = true;
+                    buyNowBtn.disabled = true;
+                }
             });
         });
         
-        // إضافة أنيميشن اهتزاز
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                20%, 60% { transform: translateX(-5px); }
-                40%, 80% { transform: translateX(5px); }
-            }
-            
-            .cart-item-size, .cart-item-color {
-                font-size: 0.9rem;
-                color: #666;
-                margin-top: 3px;
-            }
-        `;
-        document.head.appendChild(style);
+        // إخفاء خيارات الألوان والمقاسات للمنتجات التي نفدت
+        document.querySelectorAll('.out-of-stock-badge').forEach(badge => {
+            const productCard = badge.closest('.product-card');
+            const options = productCard.querySelectorAll('.product-options');
+            options.forEach(option => option.style.display = 'none');
+        });
+        
+        // تحميل الصور مسبقًا عند تحميل الصفحة
+        window.addEventListener('load', preloadImages);
     </script>
 </body>
 </html>
