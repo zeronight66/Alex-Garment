@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alean - Clothing Store</title>
+    <title>ALEX GARMENT - Clothing Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* التصميم العام */
         :root {
-            --primary: #1a1a1a;
-            --secondary: #2d2d2d;
-            --accent: #e6b87e;
+            --primary: #1e3a8a;
+            --secondary: #2563eb;
+            --accent: #3b82f6;
             --light: #f8f8f8;
             --text: #333;
             --gold: #d4af37;
@@ -85,8 +85,15 @@
             align-items: center;
         }
         
-        .logo span {
-            color: var(--accent);
+        .logo .alex {
+            color: #ff0000;
+        }
+        
+        .logo .garment {
+            color: var(--white);
+            background-color: var(--primary);
+            padding: 0 5px;
+            border-radius: 4px;
         }
         
         .logo-icon {
@@ -234,7 +241,7 @@
         }
         
         .btn:hover {
-            background-color: #d9a566;
+            background-color: #2563eb;
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -432,7 +439,7 @@
         }
         
         .buy-now:hover:not(:disabled) {
-            background: #d9a566;
+            background: #2563eb;
             transform: translateY(-3px);
         }
         
@@ -843,7 +850,7 @@
         }
         
         .checkout-btn:hover {
-            background: #d9a566;
+            background: #2563eb;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -1089,9 +1096,9 @@
         }
         
         @keyframes highlight {
-            0% { box-shadow: 0 0 0 0 rgba(230, 184, 126, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(230, 184, 126, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(230, 184, 126, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
         
         @keyframes shake {
@@ -1115,7 +1122,7 @@
             <div class="header-main">
                 <a href="#" class="logo">
                     <i class="fas fa-star logo-icon"></i>
-                     <span>Alean</span>
+                    <span class="alex">ALEX</span><span class="garment"> GARMENT</span>
                 </a>
                 
                 <nav>
@@ -1422,8 +1429,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Alean STORE</h4>
-                    <p>متجر Alean يقدم لكم أفضل تشكيلة من الملابس العصرية والأنيقة التي تجمع بين الجودة والراحة. نحرص على تقديم منتجات تلبي جميع الأذواق وتواكب أحدث صيحات الموضة.</p>
+                    <h4>ALEX GARMENT STORE</h4>
+                    <p>متجر ALEX GARMENT يقدم لكم أفضل تشكيلة من الملابس العصرية والأنيقة التي تجمع بين الجودة والراحة. نحرص على تقديم منتجات تلبي جميع الأذواق وتواكب أحدث صيحات الموضة.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/0.0alean?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/share/1EoGprrAA6/" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -1463,7 +1470,7 @@
             </div>
             
             <div class="copyright">
-                &copy; 2023 Alean STORE. جميع الحقوق محفوظة.
+                &copy; 2023 ALEX GARMENT STORE. جميع الحقوق محفوظة.
             </div>
         </div>
     </footer>
@@ -1710,7 +1717,7 @@
                 }
                 
                 // إنشاء رسالة الشراء
-                let message = "مرحبًا، أرغب في شراء المنتج التالي من Alean STORE:\n\n";
+                let message = "مرحبًا، أرغب في شراء المنتج التالي من ALEX GARMENT STORE:\n\n";
                 message += `- ${productName}\n`;
                 message += `- السعر: ${productPrice} ج\n`;
                 
@@ -1739,7 +1746,7 @@
                 return;
             }
             
-            let message = "مرحبًا، أود شراء المنتجات التالية من Alean STORE:\n\n";
+            let message = "مرحبًا، أود شراء المنتجات التالية من ALEX GARMENT STORE:\n\n";
             cart.forEach((item, index) => {
                 message += `${index+1}. ${item.name} - ${item.price} ج\n`;
                 
@@ -1765,7 +1772,7 @@
         
         // زر الواتساب الثابت
         whatsappBtn.addEventListener('click', () => {
-            const message = "مرحبًا، أرغب في الاستفسار عن منتجات Alean STORE. أرجو التواصل معي. شكرًا";
+            const message = "مرحبًا، أرغب في الاستفسار عن منتجات ALEX GARMENT STORE. أرجو التواصل معي. شكرًا";
             sendWhatsAppMessage(message);
             showNotification("جارٍ فتح واتساب للاستفسار", "whatsapp");
         });
